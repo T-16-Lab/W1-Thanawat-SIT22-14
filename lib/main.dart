@@ -361,7 +361,7 @@ class SecondPage extends StatelessWidget {
                           child: Text(
                             " ติดตาม",
                             style: TextStyle(
-                              color: Color(0xff000000),
+                              color: Color(0xffffffff),
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
