@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      initialRoute: '/second',
+      initialRoute: '/',
       routes: {
         '/': (context) => const MyHomePage(),
         '/second': (context) => const SecondPage(),
@@ -83,18 +83,20 @@ class MyHomePage extends StatelessWidget {
                 ),
               ),
             ),
+
             Container(
               padding: EdgeInsets.all(20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Padding(padding: const EdgeInsets.all(5.5)),
                   Text(
                     'ข้อมูลส่วนตัว',
                     style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
                   ),
+
                   SizedBox(height: 20),
 
-                  //เบอร์โทรศัพท์
                   Row(
                     children: [
                       Container(
@@ -127,7 +129,7 @@ class MyHomePage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 10),
-                  //วันเกิด
+
                   Row(
                     children: [
                       Container(
@@ -160,7 +162,7 @@ class MyHomePage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 10),
-                  //ที่อยู่
+
                   Row(
                     children: [
                       Container(
@@ -193,7 +195,7 @@ class MyHomePage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 10),
-                  //การศึกษา
+
                   Row(
                     children: [
                       Container(
@@ -227,7 +229,6 @@ class MyHomePage extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
 
-                  //ปุ่มไปยังหน้า 2
                   Center(
                     child: ElevatedButton(
                       onPressed: () => Navigator.pushNamed(context, '/second'),
@@ -235,7 +236,7 @@ class MyHomePage extends StatelessWidget {
                         padding: EdgeInsets.symmetric(
                           horizontal: 130,
                           vertical: 8,
-                        ), //ตั้งค่าขนาดในปุ่ม horizontal: 130 คทอความยาวของปุ่ม vertical: 8 คือความสูงของปุ่ม
+                        ),
                         backgroundColor: Colors.orange,
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
@@ -267,178 +268,162 @@ class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // พื้นหลังสีขาว
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0, // ลบเงาใต้ AppBar
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context), // ปุ่มย้อนกลับ
-        ),
-        title: Text(
-          "Thamawat_Tai", // ชื่อบนหัว
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true, //อยู่ตรงกลาง
-        actions: [
-          IconButton(
-            icon: Icon(Icons.more_horiz, color: Colors.black),
-            onPressed: () {},
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        // ใช้เพื่อให้เลื่อนหน้าจอได้ถ้าเนื้อหาเยอะ
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start, // จัดทุกอย่างชิดซ้าย
-          children: [
-            // ส่วนที่ 1: รูปโปรไฟล์ และ สถิติ (Header)
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment:
-                    MainAxisAlignment.spaceBetween, // จัดให้ห่างกันสุดขอบ
-                children: [
-                  // รูปโปรไฟล์วงกลม
-                  CircleAvatar(
-                    radius: 50, // ขนาดวงกลม
-                    backgroundImage: NetworkImage(
-                      'https://i.pinimg.com/736x/c1/06/d7/c106d79e7a5ef0101a9c45fa092cc697.jpg', // ใส่ URL รูปแมว
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(15.15),
+          child: Column(
+            children: [
+              Container(
+                child: Row(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        color: Color(0xffa8a8a8),
+                        borderRadius: BorderRadius.circular(80),
+                      ),
+                      child: ClipOval(
+                        child: Image.network(
+                          'https://i.pinimg.com/474x/b5/34/e0/b534e0e9934f8ba5a3e4b8c249cc9988.jpg',
+                          width: 90,
+                          height: 90,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
-                  ),
-                  // กลุ่มสถิติ (ใช้ Expanded เพื่อให้กินพื้นที่ที่เหลือ)
-                  Expanded(
-                    child: Row(
-                      mainAxisAlignment:
-                          MainAxisAlignment.spaceEvenly, // จัดระยะห่างเท่าๆ กัน
-                      children: [
-                        _buildStatColumn("5", "กำลังติดตาม",),
-                        _buildStatColumn("828.1 K", "ผู้ติดตาม"),
-                        _buildStatColumn("329.9 K", "ถูกใจและบันทึก"),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
 
-            SizedBox(height: 15), // เว้นระยะห่าง
-            // ส่วนที่ 2: ชื่อและรายละเอียด (Bio)
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                    SizedBox(width: 20),
+
+                    Expanded(
+                      child: IntrinsicHeight(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            _buildStatItem("5", "กำลังติดตาม"),
+                            _buildStatItem("828.1 K", "ผู้ติดตาม"),
+                            _buildStatItem("329.9 K", "ถูกใจและบันทึก"),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              SizedBox(height: 10),
+
+              Container(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Thanawat Tai",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25,
+                      ),
+                    ),
+                    SizedBox(width: 4),
+                    Icon(Icons.verified, color: Colors.blue, size: 23),
+                  ],
+                ),
+              ),
+              Column(
                 children: [
                   Row(
                     children: [
+                      Icon(Icons.tiktok, size: 15, color: Color(0xff737373)),
                       Text(
-                        "Thanawat_Tai",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        "Thanawat14",
+                        style: TextStyle(color: Color(0xff737373)),
                       ),
-                      SizedBox(width: 5),
-                      Icon(
-                        Icons.verified,
-                        color: Colors.blue,
-                        size: 20,
-                      ), // ไอคอนติ๊กถูกสีฟ้า
+                      Icon(Icons.arrow_drop_down, color: Color(0xff737373)),
                     ],
                   ),
-                  SizedBox(height: 5),
-                  Text(
-                    " Thanawat14 ▾", // จำลองข้อความ
-                    style: TextStyle(color: Colors.grey[700]),
+
+                  const SizedBox(height: 10),
+
+                  Center(
+                    child: Row(
+                      children: [
+                        ElevatedButton(
+                          onPressed: () => Navigator.pushNamed(context, '/'),
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 130,
+                              vertical: 8,
+                            ),
+                            backgroundColor: Color(0xffff9c3c),
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          child: Text(
+                            " ติดตาม",
+                            style: TextStyle(
+                              color: Color(0xff000000),
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 16),
+                        Icon(Icons.share, size: 30),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 10),
+
+                  Column(
+                    children: [
+                      Padding(padding: const EdgeInsets.all(5.5)),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.network(
+                            'https://i.pinimg.com/736x/86/df/7d/86df7d9a315a220ffaffce0f1617fd26.jpg',
+                            width: 175,
+                            height: 175,
+                            fit: BoxFit.cover,
+                          ),
+
+                          const SizedBox(width: 20),
+
+                          Image.network(
+                            'https://i.pinimg.com/736x/11/38/09/113809154f37d851bc541d5e635b8840.jpg',
+                            width: 175,
+                            height: 175,
+                            fit: BoxFit.cover,
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ),
-
-            SizedBox(height: 20),
-
-            // ส่วนที่ 3: ปุ่มติดตาม (Buttons)
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: [
-                  Expanded(
-                    // ให้ปุ่มติดตามยืดเต็มพื้นที่
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFFFF9800), // สีเหลืองนีออน
-                        foregroundColor: Colors.black, // ตัวหนังสือสีดำ
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        padding: EdgeInsets.symmetric(vertical: 12),
-                      ),
-                      child: Text(
-                        "ติดตาม",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 10),
-                  // ปุ่มแชร์ (icon เล็กๆ ข้างๆ)
-                  Container(
-                    padding: EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.shade300),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Icon(
-                      Icons.share,
-                      size: 24,
-                    ), // หรือใช้ Icons.arrow_drop_down ตามรูป
-                  ),
-                ],
-              ),
-            ),
-
-            SizedBox(height: 20),
-
-            // ส่วนที่ 4: ตารางรูปภาพ (Gallery Grid)
-            GridView.builder(
-              shrinkWrap: true, // สำคัญ! เพื่อให้ GridView อยู่ใน Column ได้
-              physics:
-                  NeverScrollableScrollPhysics(), // ปิดการเลื่อนของ GridView เอง (ให้ใช้ Scroll ของหน้าหลัก)
-              itemCount: 6, // จำนวนรูปภาพตัวอย่าง
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount:
-                    3, // แบ่งเป็น 3 คอลัมน์ (หรือ 2 ตามรูป ถ้าชอบรูปใหญ่ๆ)
-                crossAxisSpacing: 2,
-                mainAxisSpacing: 2,
-                childAspectRatio: 1, // สัดส่วนรูปภาพ 1:1 (สี่เหลี่ยมจัตุรัส)
-              ),
-              itemBuilder: (context, index) {
-                return Image.network(
-                  'https://placekitten.com/300/300?image=$index', // รูปแมวสุ่ม
-                  fit: BoxFit.cover,
-                );
-              },
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 
-  // ฟังก์ชันย่อยสำหรับสร้างคอลัมน์ตัวเลขสถิติ (เพื่อลดโค้ดซ้ำ)
-  Widget _buildStatColumn(String number, String label) {
+  Widget _buildStatItem(String count, String label) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          number,
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          count,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+            color: Colors.black87,
+          ),
         ),
         SizedBox(height: 4),
-        Text(label, style: TextStyle(fontSize: 15, color: Colors.black)),
+        Text(label, style: TextStyle(color: Color(0xff363636), fontSize: 15)),
       ],
     );
   }
