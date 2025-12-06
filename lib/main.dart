@@ -398,6 +398,29 @@ class SecondPage extends StatelessWidget {
                           ),
                         ],
                       ),
+
+                      SizedBox(height: 20,),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.network(
+                            'https://i.pinimg.com/1200x/d6/8e/53/d68e538a531b0dd4fae5bc2dffd0a1d5.jpg',
+                            width: 175,
+                            height: 175,
+                            fit: BoxFit.cover,
+                          ),
+
+                          const SizedBox(width: 20),
+
+                          Image.network(
+                            'https://i.pinimg.com/736x/9c/99/6c/9c996ca92a001d6b570727cc12727c4d.jpg',
+                            width: 175,
+                            height: 175,
+                            fit: BoxFit.cover,
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ],
@@ -427,4 +450,3 @@ class SecondPage extends StatelessWidget {
     );
   }
 }
-
