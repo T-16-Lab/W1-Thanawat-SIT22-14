@@ -291,7 +291,7 @@ class SecondPage extends StatelessWidget {
                       ),
                     ),
 
-                    SizedBox(width: 20),
+                    SizedBox(width: 5),
 
                     Expanded(
                       child: IntrinsicHeight(
@@ -299,7 +299,21 @@ class SecondPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             _buildStatItem("5", "กำลังติดตาม"),
+
+                            VerticalDivider(
+                              color: Colors.grey.shade400,
+                              thickness: 1,
+                              width: 15,
+                            ),
+
                             _buildStatItem("828.1 K", "ผู้ติดตาม"),
+
+                            VerticalDivider(
+                              color: Colors.grey.shade400,
+                              thickness: 1,
+                              width: 15,
+                            ),
+
                             _buildStatItem("329.9 K", "ถูกใจและบันทึก"),
                           ],
                         ),
@@ -399,7 +413,7 @@ class SecondPage extends StatelessWidget {
                         ],
                       ),
 
-                      SizedBox(height: 20,),
+                      SizedBox(height: 20),
 
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
