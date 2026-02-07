@@ -219,26 +219,35 @@ class SecondPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
+        // SafeArea ป้องกัน UI ชนขอบจอ / รอยบาก / แถบสถานะ
         child: Padding(
           padding: const EdgeInsets.all(15),
+          // Padding รอบหน้าทั้งหมด
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /// ---------- PROFILE + STATS ----------
+
+              /// =====================================================
+              /// =============== PROFILE + STAT BAR ==================
+              /// =====================================================
               Row(
                 children: [
-                  /// รูปโปรไฟล์
+
+                  /// ---------- รูปโปรไฟล์ ----------
                   Container(
-                    padding: const EdgeInsets.all(4),
+                    padding: const EdgeInsets.all(4), // กรอบรอบรูป
                     decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(80),
+                      color: Colors.grey, // สีขอบ
+                      borderRadius: BorderRadius.circular(80), // ทำให้เป็นวงกลม
                     ),
                     child: ClipOval(
+                      // ClipOval ตัดรูปให้เป็นวงกลม
                       child: Image.network(
                         'https://i.pinimg.com/736x/9c/0e/80/9c0e8059e8b99dc7aefb126224c4aedc.jpg',
+                        // 👆 ลิ้งรูป (รูปโปรไฟล์)
                         width: 90,
                         height: 90,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.cover, // เต็มกรอบ ไม่บิดรูป
                       ),
                     ),
                   ),
@@ -247,11 +256,13 @@ class SecondPage extends StatelessWidget {
 
                   /// ---------- STAT BAR ----------
                   Expanded(
+                    // Expanded ทำให้ฝั่งขวากินพื้นที่ที่เหลือ
                     child: IntrinsicHeight(
-                      // IntrinsicHeight ทำให้ VerticalDivider สูงพอดีกับตัวเลข
+                      // IntrinsicHeight ทำให้ VerticalDivider สูงพอดีกับเนื้อหา
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
+
                           _buildStatItem("5", "กำลังติดตาม"),
 
                           /// เส้นคั่นแนวตั้ง
@@ -278,46 +289,58 @@ class SecondPage extends StatelessWidget {
                 ],
               ),
 
-              const SizedBox(height: 10),
+              const SizedBox(height: 12),
 
-              /// ---------- NAME ----------
+              /// =====================================================
+              /// ================== NAME + USER ======================
+              /// =====================================================
               Row(
                 children: const [
                   Text(
-                    "Thanawat Tai",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                    "Wisartut_Yuensuk",
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                  SizedBox(width: 4),
-                  Icon(Icons.verified, color: Colors.blue, size: 23),
+                  SizedBox(width: 6),
+                  Icon(Icons.verified, color: Colors.blue, size: 22),
                 ],
               ),
 
               Row(
                 children: const [
-                  Icon(Icons.tiktok, size: 15, color: Color(0xff737373)),
+                  Icon(Icons.tiktok, size: 16, color: Color(0xff737373)),
+                  SizedBox(width: 4),
                   Text(
-                    "Thanawat14",
+                    "wisarut26",
                     style: TextStyle(color: Color(0xff737373)),
                   ),
                   Icon(Icons.arrow_drop_down, color: Color(0xff737373)),
                 ],
               ),
 
-              const SizedBox(height: 10),
+              const SizedBox(height: 12),
 
-              /// ---------- FOLLOW BUTTON ----------
+              /// =====================================================
+              /// ================= FOLLOW BUTTON =====================
+              /// =====================================================
               Row(
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () => Navigator.pop(context),
+                      onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xffff9c3c),
-                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        backgroundColor: Colors.yellow,
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
                       ),
                       child: const Text(
                         "ติดตาม",
                         style: TextStyle(
+                          color: Colors.black,
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
@@ -328,6 +351,27 @@ class SecondPage extends StatelessWidget {
                   const Icon(Icons.share, size: 30),
                 ],
               ),
+
+              const SizedBox(height: 20),
+
+              /// =====================================================
+              /// ================= IMAGE GRID ========================
+              /// =====================================================
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+
+                  _buildImageItem(
+                    'https://i.pinimg.com/736x/51/ff/2a/51ff2a4128cde5f7931ffe83a9e7a9c6.jpg',
+                  ),
+
+                  const SizedBox(width: 15),
+
+                  _buildImageItem(
+                    'https://i.pinimg.com/736x/43/53/07/4353070dcf5836d3c4b5373f0a592d5e.jpg',
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -335,25 +379,47 @@ class SecondPage extends StatelessWidget {
     );
   }
 
-  /// widget แสดงสถิติ
+  /// =====================================================
+  /// =============== STAT ITEM WIDGET ====================
+  /// =====================================================
   Widget _buildStatItem(String count, String label) {
     return Column(
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: MainAxisSize.min, // สูงเท่าที่จำเป็น
       children: [
         Text(
           count,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 18,
-            color: Colors.black87,
+            color: Colors.black,
           ),
         ),
         const SizedBox(height: 4),
         Text(
           label,
-          style: const TextStyle(color: Color(0xff363636), fontSize: 15),
+          style: const TextStyle(
+            fontSize: 14,
+            color: Colors.grey,
+          ),
         ),
       ],
+    );
+  }
+
+  /// =====================================================
+  /// =============== IMAGE ITEM WIDGET ===================
+  /// =====================================================
+  Widget _buildImageItem(String imageUrl) {
+    return ClipRRect(
+      // ClipRRect ตัดขอบรูปให้โค้ง
+      borderRadius: BorderRadius.circular(12),
+      child: Image.network(
+        imageUrl,
+        // 👆 ลิ้งรูป
+        width: 170,
+        height: 170,
+        fit: BoxFit.cover, // เต็มกรอบ
+      ),
     );
   }
 }
