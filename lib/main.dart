@@ -4,6 +4,9 @@ void main() {
   runApp(const MyApp());
 }
 
+/// =======================
+/// APP ROOT
+/// =======================
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -23,6 +26,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
+/// =======================
+/// PAGE 1 : PROFILE
+/// =======================
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
@@ -30,15 +36,20 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(color: Color(0xFFEEA943)),
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-              child: Center(
+        child: SingleChildScrollView(
+          // กันจอล้น
+          child: Column(
+            children: [
+              /// ---------- HEADER ----------
+              Container(
+                decoration: const BoxDecoration(color: Color(0xFFEEA943)),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 20,
+                ),
                 child: Column(
                   children: [
-                    Text(
+                    const Text(
                       "ข้อมูลส่วนตัว",
                       style: TextStyle(
                         fontSize: 30,
@@ -46,9 +57,11 @@ class MyHomePage extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
+
+                    /// รูปโปรไฟล์
                     Container(
-                      padding: EdgeInsets.all(6),
+                      padding: const EdgeInsets.all(6),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(80),
@@ -62,8 +75,9 @@ class MyHomePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
-                    Text(
+
+                    const SizedBox(height: 20),
+                    const Text(
                       "Thanawat Patthanathaworn",
                       style: TextStyle(
                         color: Colors.white,
@@ -71,7 +85,7 @@ class MyHomePage extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    Text(
+                    const Text(
                       "Thanawat.patthanathaworn@-tech.ac.th",
                       style: TextStyle(
                         color: Colors.white,
@@ -82,185 +96,122 @@ class MyHomePage extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-            Container(
-              padding: EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(padding: const EdgeInsets.all(5.5)),
-                  Text(
-                    'ข้อมูลส่วนตัว',
-                    style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
-                  ),
 
-                  SizedBox(height: 20),
-
-                  Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Color(0xFF6DD91A),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Icon(
-                          Icons.phone,
-                          size: 35,
-                          color: Color(0xFFE6FFEE),
-                        ),
+              /// ---------- DETAIL ----------
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'ข้อมูลส่วนตัว',
+                      style: TextStyle(
+                        fontSize: 23,
+                        fontWeight: FontWeight.bold,
                       ),
-                      SizedBox(width: 12),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('เบอร์โทรศัพท์', style: TextStyle(fontSize: 16)),
-                          SizedBox(height: 5),
-                          Text(
-                            "012-345-6789",
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                            ),
+                    ),
+                    const SizedBox(height: 20),
+
+                    _infoRow(
+                      Icons.phone,
+                      Colors.green,
+                      "เบอร์โทรศัพท์",
+                      "012-345-6789",
+                    ),
+                    _infoRow(
+                      Icons.cake,
+                      Colors.pink,
+                      "วันเกิด",
+                      "28 มีนาคม 2549",
+                    ),
+                    _infoRow(
+                      Icons.pin_drop,
+                      Colors.orange,
+                      "ที่อยู่",
+                      "ชลบุรี",
+                    ),
+                    _infoRow(
+                      Icons.school,
+                      Colors.deepPurple,
+                      "การศึกษา",
+                      "วิทยาลัยเทคโนโลยีภาคตะวันออก (อี.เทค)",
+                    ),
+
+                    const SizedBox(height: 20),
+
+                    /// ปุ่มเปลี่ยนหน้า
+                    Center(
+                      child: ElevatedButton(
+                        onPressed: () =>
+                            Navigator.pushNamed(context, '/second'),
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 130,
+                            vertical: 8,
                           ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10),
-
-                  Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.pink[300],
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Icon(
-                          Icons.cake,
-                          size: 35,
-                          color: Color(0xFFFFB5B5),
-                        ),
-                      ),
-                      SizedBox(width: 12),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('วันเกิด', style: TextStyle(fontSize: 16)),
-                          SizedBox(height: 5),
-                          Text(
-                            "28 มีนาคม 2549",
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                            ),
+                          backgroundColor: Colors.orange,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
                           ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10),
-
-                  Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Color(0xFFFFE3C4),
-                          borderRadius: BorderRadius.circular(8),
                         ),
-                        child: Icon(
-                          Icons.pin_drop,
-                          size: 35,
-                          color: Color(0xFFEA9844),
-                        ),
-                      ),
-                      SizedBox(width: 12),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('ที่อยู่', style: TextStyle(fontSize: 16)),
-                          SizedBox(height: 5),
-                          Text(
-                            "ชลบุรี",
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                            ),
+                        child: const Text(
+                          "Change Page",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
                           ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10),
-
-                  Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Color(0xFFE6D8FF),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Icon(
-                          Icons.school,
-                          size: 35,
-                          color: Color(0xFF6B39CE),
-                        ),
-                      ),
-                      SizedBox(width: 12),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('การศึกษา', style: TextStyle(fontSize: 16)),
-                          SizedBox(height: 5),
-                          Text(
-                            "วิทยาลัยเทคโนโลยีภาคตะวันออก (อี.เทค)",
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 20),
-
-                  Center(
-                    child: ElevatedButton(
-                      onPressed: () => Navigator.pushNamed(context, '/second'),
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 130,
-                          vertical: 8,
-                        ),
-                        backgroundColor: Colors.orange,
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                      ),
-                      child: Text(
-                        "Change Page",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
+      ),
+    );
+  }
+
+  /// widget แถวข้อมูล
+  Widget _infoRow(IconData icon, Color color, String title, String value) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: color.withOpacity(0.8),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Icon(icon, size: 35, color: Colors.white),
+          ),
+          const SizedBox(width: 12),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(title, style: const TextStyle(fontSize: 16)),
+              const SizedBox(height: 5),
+              Text(
+                value,
+                style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
 }
 
+/// =======================
+/// PAGE 2 : SOCIAL PROFILE
+/// =======================
 class SecondPage extends StatelessWidget {
   const SecondPage({super.key});
 
@@ -269,160 +220,112 @@ class SecondPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(15.15),
+          padding: const EdgeInsets.all(15),
           child: Column(
             children: [
-              Container(
-                child: Row(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(4),
-                      decoration: BoxDecoration(
-                        color: Color(0xffa8a8a8),
-                        borderRadius: BorderRadius.circular(80),
-                      ),
-                      child: ClipOval(
-                        child: Image.network(
-                          'https://i.pinimg.com/736x/9c/0e/80/9c0e8059e8b99dc7aefb126224c4aedc.jpg',
-                          width: 90,
-                          height: 90,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-
-                    SizedBox(width: 20),
-
-                    Expanded(
-                      child: IntrinsicHeight(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            _buildStatItem("5", "กำลังติดตาม"),
-                            _buildStatItem("828.1 K", "ผู้ติดตาม"),
-                            _buildStatItem("329.9 K", "ถูกใจและบันทึก"),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              SizedBox(height: 10),
-
-              Container(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Thanawat Tai",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                      ),
-                    ),
-                    SizedBox(width: 4),
-                    Icon(Icons.verified, color: Colors.blue, size: 23),
-                  ],
-                ),
-              ),
-              Column(
+              /// ---------- PROFILE + STATS ----------
+              Row(
                 children: [
-                  Row(
-                    children: [
-                      Icon(Icons.tiktok, size: 15, color: Color(0xff737373)),
-                      Text(
-                        "Thanawat14",
-                        style: TextStyle(color: Color(0xff737373)),
+                  /// รูปโปรไฟล์
+                  Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(80),
+                    ),
+                    child: ClipOval(
+                      child: Image.network(
+                        'https://i.pinimg.com/736x/9c/0e/80/9c0e8059e8b99dc7aefb126224c4aedc.jpg',
+                        width: 90,
+                        height: 90,
+                        fit: BoxFit.cover,
                       ),
-                      Icon(Icons.arrow_drop_down, color: Color(0xff737373)),
-                    ],
-                  ),
-
-                  const SizedBox(height: 10),
-
-                  Center(
-                    child: Row(
-                      children: [
-                        ElevatedButton(
-                          onPressed: () => Navigator.pushNamed(context, '/'),
-                          style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 130,
-                              vertical: 8,
-                            ),
-                            backgroundColor: Color(0xffff9c3c),
-                            foregroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          child: Text(
-                            " ติดตาม",
-                            style: TextStyle(
-                              color: Color(0xffffffff),
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 16),
-                        Icon(Icons.share, size: 30),
-                      ],
                     ),
                   ),
 
-                  const SizedBox(height: 10),
+                  const SizedBox(width: 20),
 
-                  Column(
-                    children: [
-                      Padding(padding: const EdgeInsets.all(5.5)),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                  /// ---------- STAT BAR ----------
+                  Expanded(
+                    child: IntrinsicHeight(
+                      // IntrinsicHeight ทำให้ VerticalDivider สูงพอดีกับตัวเลข
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Image.network(
-                            'https://i.pinimg.com/736x/9c/16/4b/9c164b0e93a7cfe6567917e0131fe85c.jpg',
-                            width: 175,
-                            height: 175,
-                            fit: BoxFit.cover,
+                          _buildStatItem("5", "กำลังติดตาม"),
+
+                          /// เส้นคั่นแนวตั้ง
+                          VerticalDivider(
+                            color: Colors.grey.shade400,
+                            thickness: 1,
+                            width: 1,
                           ),
 
-                          const SizedBox(width: 20),
+                          _buildStatItem("828.1 K", "ผู้ติดตาม"),
 
-                          Image.network(
-                            'https://i.pinimg.com/736x/43/66/2b/43662b2069be2736bd4f6ce578ee1323.jpg',
-                            width: 175,
-                            height: 175,
-                            fit: BoxFit.cover,
+                          /// เส้นคั่นแนวตั้ง
+                          VerticalDivider(
+                            color: Colors.grey.shade400,
+                            thickness: 1,
+                            width: 1,
                           ),
+
+                          _buildStatItem("329.9 K", "ถูกใจและบันทึก"),
                         ],
                       ),
-
-                      SizedBox(height: 20,),
-
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.network(
-                            'https://i.pinimg.com/1200x/0c/5c/5b/0c5c5b98d3997d155ba0bb2a19e1d43c.jpg',
-                            width: 175,
-                            height: 175,
-                            fit: BoxFit.cover,
-                          ),
-
-                          const SizedBox(width: 20),
-
-                          Image.network(
-                            'https://i.pinimg.com/736x/0b/3a/55/0b3a55e05b59043d15109c0b2c943751.jpg',
-                            width: 175,
-                            height: 175,
-                            fit: BoxFit.cover,
-                          ),
-                        ],
-                      ),
-                    ],
+                    ),
                   ),
+                ],
+              ),
+
+              const SizedBox(height: 10),
+
+              /// ---------- NAME ----------
+              Row(
+                children: const [
+                  Text(
+                    "Thanawat Tai",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                  ),
+                  SizedBox(width: 4),
+                  Icon(Icons.verified, color: Colors.blue, size: 23),
+                ],
+              ),
+
+              Row(
+                children: const [
+                  Icon(Icons.tiktok, size: 15, color: Color(0xff737373)),
+                  Text(
+                    "Thanawat14",
+                    style: TextStyle(color: Color(0xff737373)),
+                  ),
+                  Icon(Icons.arrow_drop_down, color: Color(0xff737373)),
+                ],
+              ),
+
+              const SizedBox(height: 10),
+
+              /// ---------- FOLLOW BUTTON ----------
+              Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () => Navigator.pop(context),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xffff9c3c),
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                      ),
+                      child: const Text(
+                        "ติดตาม",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  const Icon(Icons.share, size: 30),
                 ],
               ),
             ],
@@ -432,20 +335,24 @@ class SecondPage extends StatelessWidget {
     );
   }
 
+  /// widget แสดงสถิติ
   Widget _buildStatItem(String count, String label) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           count,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 18,
             color: Colors.black87,
           ),
         ),
-        SizedBox(height: 4),
-        Text(label, style: TextStyle(color: Color(0xff363636), fontSize: 15)),
+        const SizedBox(height: 4),
+        Text(
+          label,
+          style: const TextStyle(color: Color(0xff363636), fontSize: 15),
+        ),
       ],
     );
   }
