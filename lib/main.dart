@@ -244,7 +244,6 @@ class SecondPage extends StatelessWidget {
                       // ClipOval ตัดรูปให้เป็นวงกลม
                       child: Image.network(
                         'https://i.pinimg.com/736x/9c/0e/80/9c0e8059e8b99dc7aefb126224c4aedc.jpg',
-                        // 👆 ลิ้งรูป (รูปโปรไฟล์)
                         width: 90,
                         height: 90,
                         fit: BoxFit.cover, // เต็มกรอบ ไม่บิดรูป
