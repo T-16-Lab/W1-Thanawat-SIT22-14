@@ -357,5 +357,3 @@ class SecondPage extends StatelessWidget {
     );
   }
 }
-
-
