@@ -283,7 +283,7 @@ class SecondPage extends StatelessWidget {
                       ),
                       child: ClipOval(
                         child: Image.network(
-                          'https://i.pinimg.com/474x/b5/34/e0/b534e0e9934f8ba5a3e4b8c249cc9988.jpg',
+                          'https://i.pinimg.com/736x/9c/0e/80/9c0e8059e8b99dc7aefb126224c4aedc.jpg',
                           width: 90,
                           height: 90,
                           fit: BoxFit.cover,
@@ -291,7 +291,7 @@ class SecondPage extends StatelessWidget {
                       ),
                     ),
 
-                    SizedBox(width: 5),
+                    SizedBox(width: 20),
 
                     Expanded(
                       child: IntrinsicHeight(
@@ -299,21 +299,7 @@ class SecondPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             _buildStatItem("5", "กำลังติดตาม"),
-
-                            VerticalDivider(
-                              color: Colors.grey.shade400,
-                              thickness: 1,
-                              width: 15,
-                            ),
-
                             _buildStatItem("828.1 K", "ผู้ติดตาม"),
-
-                            VerticalDivider(
-                              color: Colors.grey.shade400,
-                              thickness: 1,
-                              width: 15,
-                            ),
-
                             _buildStatItem("329.9 K", "ถูกใจและบันทึก"),
                           ],
                         ),
@@ -396,7 +382,7 @@ class SecondPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.network(
-                            'https://i.pinimg.com/736x/86/df/7d/86df7d9a315a220ffaffce0f1617fd26.jpg',
+                            'https://i.pinimg.com/736x/9c/16/4b/9c164b0e93a7cfe6567917e0131fe85c.jpg',
                             width: 175,
                             height: 175,
                             fit: BoxFit.cover,
@@ -405,7 +391,7 @@ class SecondPage extends StatelessWidget {
                           const SizedBox(width: 20),
 
                           Image.network(
-                            'https://i.pinimg.com/736x/11/38/09/113809154f37d851bc541d5e635b8840.jpg',
+                            'https://i.pinimg.com/736x/43/66/2b/43662b2069be2736bd4f6ce578ee1323.jpg',
                             width: 175,
                             height: 175,
                             fit: BoxFit.cover,
@@ -413,13 +399,13 @@ class SecondPage extends StatelessWidget {
                         ],
                       ),
 
-                      SizedBox(height: 20),
+                      SizedBox(height: 20,),
 
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.network(
-                            'https://i.pinimg.com/1200x/d6/8e/53/d68e538a531b0dd4fae5bc2dffd0a1d5.jpg',
+                            'https://i.pinimg.com/1200x/0c/5c/5b/0c5c5b98d3997d155ba0bb2a19e1d43c.jpg',
                             width: 175,
                             height: 175,
                             fit: BoxFit.cover,
@@ -428,7 +414,7 @@ class SecondPage extends StatelessWidget {
                           const SizedBox(width: 20),
 
                           Image.network(
-                            'https://i.pinimg.com/736x/9c/99/6c/9c996ca92a001d6b570727cc12727c4d.jpg',
+                            'https://i.pinimg.com/736x/0b/3a/55/0b3a55e05b59043d15109c0b2c943751.jpg',
                             width: 175,
                             height: 175,
                             fit: BoxFit.cover,
